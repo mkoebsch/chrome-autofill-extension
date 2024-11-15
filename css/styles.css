@@ -1,0 +1,306 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Light and Dark Mode Variables */
+:root {
+    --background-color: #ffffff;
+    --text-color: #333;
+    --container-background: #f4f4f9;
+    --primary-color: #0073e6;
+    --button-background: #0073e6;
+    --button-color: white;
+}
+
+body.dark-mode {
+    --background-color: #333;
+    --text-color: #ffffff;
+    --container-background: #444;
+}
+
+/* Body and Container Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    width: 75%;
+    max-height: 80vh; /* Limits container height to 80% of viewport */
+    max-width: 650px;
+    background: var(--container-background);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column; /* Ensures child elements align vertically */
+    transition: background-color 0.3s;
+}
+
+#content {
+    flex: 1; /* Allows #content to take up remaining space within .container */
+    overflow-y: auto; /* Enables vertical scrolling */
+    overflow-x: auto; /* Prevents horizontal overflow */
+    padding: 15px;
+}
+
+
+
+
+/* Adjusted container for better centering */
+.toggle-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: var(--primary-color);
+    height: 50px; /* Ensures toggle container has a consistent height */
+}
+
+/* Flex container holding the switch and label */
+.left-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Space between switch and label */
+    height: 100%; /* Ensures alignment within toggle container */
+}
+
+/* Adjusted switch dimensions and vertical alignment */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 26px;
+    vertical-align: middle; /* Vertically aligns switch with its label */
+    display: flex;
+    align-items: center;  /* Ensures the switch is centered vertically */
+    justify-content: center; /* Centers the content inside the switch */
+}
+
+/* Hide the input */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Slider Styling */
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 26px;
+}
+
+/* Adjusted slider thumb dimensions */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 22px; /* Slightly smaller to center within the slider */
+    width: 22px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+/* Color changes when switch is checked */
+input:checked + .slider {
+    background-color: #66bb6a;
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px); /* Shifts the knob to the right */
+}
+
+/* Styling for the toggle label */
+.toggle-label {
+    color: white;
+    font-size: 16px;
+    line-height: 1; /* Centers well with the switch */
+}
+
+/* Dark Mode Icon Styling */
+.dark-mode-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.dark-mode-icon img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Menu Bar Styling */
+.menu-bar {
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+    background: var(--primary-color);
+}
+
+.menu-button {
+    color: white;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.menu-button.active {
+    font-weight: bold;
+}
+
+.menu-button:hover {
+    text-decoration: underline;
+}
+
+
+.content-section {
+    display: none; /* Hide by default */
+}
+
+.content-section.active {
+    display: block; /* Show when active */
+}
+
+h2 {
+    margin-top: 5px;
+    margin-bottom: 10px;    
+}
+
+h3 {
+    margin-top: 3px;
+    margin-bottom: 5px;
+}
+
+label {
+    display: block;
+    margin: 5px 0 5px;
+}
+
+input[type="text"], input[type="password"], select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 3px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+input[type="file"] {
+    display: none;   
+}
+
+button {
+    padding: 8px 12px;
+    background-color: var(--button-background);
+    color: var(--button-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button[id="import-settings"], button[id="save-profile"] {
+    background-color: #66bb6a;   
+}
+
+button[id="export-settings"], button[id="delete-profile"], button[class="delete-button"] {
+    background-color: #ff8164;   
+}
+
+/* Flex container for each group of input fields */
+.input-group {
+    display: flex;
+    gap: 10px; /* Space between the inputs */
+    margin-bottom: 3px; /* Space between input groups */
+}
+
+
+/* Adjusting width of individual fields */
+#first-name, #last-name {
+    flex: 1; /* Equal width for first and last name */
+}
+
+#street {
+    flex: 2; /* Street takes up more space */
+}
+
+#house-number {
+    flex: 1; /* House number takes less space */
+}
+
+#postcode {
+    flex: 1; /* Postcode takes less space */
+}
+
+#city {
+    flex: 2; /* City takes up more space */
+}
+
+#dob-day, #dob-month, #dob-year {
+    flex: 1; /* All date of birth fields take equal space */
+}
+
+#country {
+    flex: 2; /* Country dropdown takes more space */
+}
+
+/* Container for each rule row */
+.rule-row {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between elements */
+}
+
+/* Basic styling for select elements and input */
+.rule-row select,
+.rule-row input[type="text"] {
+    padding: 6px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-width: 120px;
+}
+
+/* Responsive Styling */
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .menu-bar {
+        flex-direction: column;
+    }
+
+    .menu-button {
+        padding: 10px;
+        text-align: center;
+    }
+    
+    .input-group {
+        flex-direction: column; /* Stack inputs vertically */
+    }
+    .input-group input,
+    .input-group select {
+        width: 100%; /* Make inputs and select full width */
+    }
+}

@@ -1,8 +1,10 @@
-# *STILL WORK IN PROGRESS - NOT ALL FEATURES IMPLEMETED*
+# *STILL WORK IN PROGRESS - NOT ALL FEATURES IMPLEMENTED*
 
 # Chrome Autofill extension
 
 This chrome extension aims to automatically fill forms on web pages using predefined user profiles - to assist for a faster checkout or testing purposes.
+
+![Screenshot](./screenshot.png)
 
 ## Installation
 
@@ -26,3 +28,5 @@ git clone https://github.com/mkoebsch/chrome-autofill-extension.git
 2. Configure your first profile in the profiles section
 
 3. Configure your current active profile in the settings section
+
+4. Toggle the Autofill enabled button
