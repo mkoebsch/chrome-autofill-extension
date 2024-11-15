@@ -1,0 +1,35 @@
+{
+    "manifest_version": 3,
+    "name": "Autofill Extension",
+    "version": "1.0",
+    "description": "A Chrome extension to enable autofill for a simple checkout and testing purposes.",
+    "permissions": ["storage", "activeTab", "scripting"],
+    "action": {
+        "default_icon": {
+            "16": "img/icon16.png",
+            "48": "img/icon48.png",
+            "128": "img/icon128.png"
+        }
+    },
+    "icons": {
+        "16": "img/icon16.png",
+        "48": "img/icon48.png",
+        "128": "img/icon128.png"
+    },
+    "content_security_policy": {
+        "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+    },
+    "background": {
+        "service_worker": "js/background.js",
+        "type": "module"
+    },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["js/contentScript.js"]
+    }
+  ],
+    "host_permissions": [
+        "<all_urls>"
+    ]
+}
