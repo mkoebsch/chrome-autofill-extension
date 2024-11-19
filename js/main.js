@@ -153,7 +153,7 @@ async function loadProfiles() {
         console.log("Error at settings: " + e);
     }
     
-    autofillOptionsForm.addEventListener('change', function(event) {    
+    async function saveSettings() {
         const autofillOption = document.querySelector('input[name="autofillOption"]:checked').value;
         let whitelistDomains = [];
         let blacklistDomains = [];
@@ -169,7 +169,11 @@ async function loadProfiles() {
         chrome.storage.sync.set({ autofillOption: autofillOption, whitelistDomains: whitelistDomains, blacklistDomains: blacklistDomains });
 
         // Here you would save the settings (e.g., to localStorage or send to a server)
-        // localStorage.setItem('autofill-settings', JSON.stringify({ autofillOption, whitelistDomains, blacklistDomains }));
+        // localStorage.setItem('autofill-settings', JSON.stringify({ autofillOption, whitelistDomains, blacklistDomains }));        
+    }
+    
+    autofillOptionsForm.addEventListener('change', function(event) {    
+        saveSettings();
     });
     
     importButton.addEventListener("click", () => {
@@ -444,6 +448,7 @@ async function loadProfiles() {
                 if (found==false) {
                     profiles.push(newProfile);
                 }
+                saveSettings();
                 chrome.storage.sync.set({ profiles: profiles }, function() {
                     alert('Profile saved!');
                     location.reload(); // Reload to update the dropdowns

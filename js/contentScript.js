@@ -240,7 +240,7 @@ const countryMapping = {
 
 const salutationMapping = {
     "Male": ["Herr", "Mr.", "Mr", "Male", "Men", "Man"],
-    "Female": ["Frau", "Mrs.", "Mrs", "Female", "Women", "Woman"]
+    "Female": ["Frau", "Mrs.", "Mrs", "Ms.", "Ms", "Female", "Women", "Woman"]
 }
 
 const typeMapping = {
@@ -625,6 +625,7 @@ function autofillGenericForm(currentActiveProfile) {
 
 // Main function to handle autofill process
 async function autofillFormOnPageLoad() {
+
     // Retrieve settings and profile data
     const { autofillEnabled, activeProfile, profiles, autofillOption, whitelistDomains, blacklistDomains } = await chrome.runtime.sendMessage({ type: "getAutofillSettings" });
     if (!autofillEnabled || activeProfile === "") return;
