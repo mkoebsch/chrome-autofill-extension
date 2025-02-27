@@ -435,20 +435,9 @@ function fillField(field, value) {
 
         const inputEvent = new Event('input', { bubbles: true });
         const changeEvent = new Event('change', { bubbles: true });
-
-        let currentIndex = 0;
-        function simulateTyping() {
-            if (currentIndex < value.length) {
-                field.value += value[currentIndex];
-                field.dispatchEvent(inputEvent);
-                currentIndex++;
-                setTimeout(simulateTyping, 10);
-            } else {
-                field.dispatchEvent(changeEvent);
-                filledFields.add(fieldIdentifier); // Mark as filled
-            }
-        }
-        simulateTyping();
+        field.value = value
+        field.dispatchEvent(inputEvent);
+        filledFields.add(fieldIdentifier); // Mark as filled
     }
 }
 

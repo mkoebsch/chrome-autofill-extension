@@ -226,6 +226,13 @@ button[id="export-settings"], button[id="delete-profile"], button[class="delete-
     background-color: #ff8164;   
 }
 
+button:disabled,
+button[disabled]{
+    background-color: var(--button-background);
+    color: #808080;
+    cursor: default;
+}
+
 /* Flex container for each group of input fields */
 .input-group {
     display: flex;
