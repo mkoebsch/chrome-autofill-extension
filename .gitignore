@@ -1,0 +1,29 @@
+# Agent-local tooling and design memory
+/.agents/
+/.codex/
+/.hallmark/
+/skills-lock.json
+
+# Local maintenance scripts
+/scripts/
+
+# Dependencies and generated output
+/node_modules/
+/coverage/
+*.log
+*.zip
+
+# Local secrets
+.env
+.env.local
+.env.*.local
+
+# Editor and operating-system files
+/.idea/
+/.vscode/
+.DS_Store
+Thumbs.db
+
+# Python caches
+__pycache__/
+*.py[cod]
